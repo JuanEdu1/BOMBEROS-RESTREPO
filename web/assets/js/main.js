@@ -55,7 +55,7 @@
       else { scrim.classList.remove('is-visible'); setTimeout(function () { scrim.hidden = true; }, 220); }
     }
     // Bloquear scroll de fondo solo en móvil (cuando el menú es overlay)
-    var isOverlay = window.matchMedia('(max-width: 959px)').matches;
+    var isOverlay = window.matchMedia('(max-width: 1079px)').matches;
     document.body.style.overflow = (open && isOverlay) ? 'hidden' : '';
 
     if (open) {
@@ -87,7 +87,7 @@
   document.addEventListener('keydown', function (e) {
     if (nav && nav.getAttribute('data-open') === 'true') {
       if (e.key === 'Escape') { setMenu(false); return; }
-      if (e.key === 'Tab' && window.matchMedia('(max-width: 959px)').matches) {
+      if (e.key === 'Tab' && window.matchMedia('(max-width: 1079px)').matches) {
         var focusables = menu.querySelectorAll('a[href], button:not([disabled])');
         if (!focusables.length) return;
         var firstEl = focusables[0];
@@ -100,7 +100,7 @@
 
   // Reset al pasar a desktop
   window.addEventListener('resize', function () {
-    if (window.matchMedia('(min-width: 960px)').matches && nav && nav.getAttribute('data-open') === 'true') {
+    if (window.matchMedia('(min-width: 1080px)').matches && nav && nav.getAttribute('data-open') === 'true') {
       setMenu(false);
     }
   });
