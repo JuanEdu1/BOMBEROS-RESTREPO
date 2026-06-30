@@ -1,0 +1,28 @@
+# Caddy sirve el sitio estático de web/ en el puerto que provee Railway ($PORT).
+# Railway termina TLS en el borde, así que aquí solo HTTP (auto_https off).
+{
+	admin off
+	auto_https off
+	persist_config off
+}
+
+:{$PORT:8080} {
+	root * /srv
+	encode gzip zstd
+	file_server
+
+	header {
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+	}
+
+	# Cache para assets estáticos
+	@assets path *.css *.js *.svg *.woff2 *.ico *.png *.jpg *.jpeg *.webp
+	header @assets Cache-Control "public, max-age=86400"
+
+	log {
+		output stdout
+		format console
+	}
+}

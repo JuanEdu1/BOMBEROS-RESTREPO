@@ -1,0 +1,3 @@
+# Dependencias para el script de subida a Cloudinary
+cloudinary>=1.40
+python-dotenv>=1.0

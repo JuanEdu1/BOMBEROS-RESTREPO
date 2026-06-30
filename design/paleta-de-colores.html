@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Identidad visual y contenido · Bomberos Voluntarios de Restrepo</title>
+<style>
+  :root{
+    --color-primary:#E71118; --color-primary-hover:#B00D12; --color-primary-contrast:#FFFFFF;
+    --color-secondary:#327D44; --color-secondary-hover:#2A6B3A; --color-accent:#F2A900;
+    --color-bg:#FFFFFF; --color-surface:#F5F6F7; --color-surface-2:#ECEEF0; --color-border:#D9DCE0;
+    --color-text:#1A1A1A; --color-text-muted:#4A4F55;
+    --color-success:#1E7B45; --color-warning:#9A5B00; --color-error:#B00020; --color-focus:#1B2A4A;
+    --font-head:'Archivo','Segoe UI',system-ui,sans-serif;
+    --font-body:'Inter','Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font-body);background:var(--color-surface);color:var(--color-text);line-height:1.6;padding:32px 16px}
+  .wrap{max-width:1140px;margin:0 auto}
+  .kicker{display:inline-block;background:var(--color-primary);color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+  h1{font-family:var(--font-head);font-size:34px;font-weight:800;line-height:1.1;margin:14px 0 6px}
+  .sub{color:var(--color-text-muted);font-size:15px;margin-bottom:8px;max-width:760px}
+  h2{font-family:var(--font-head);font-size:22px;font-weight:700;margin:38px 0 14px;display:flex;align-items:center;gap:10px}
+  h2 .bar{width:6px;height:22px;background:var(--color-primary);border-radius:3px}
+  .lead{display:flex;gap:22px;align-items:center;background:var(--color-bg);border:1px solid var(--color-border);border-radius:16px;padding:20px;margin-top:18px;flex-wrap:wrap}
+  .lead img{width:150px;height:150px;object-fit:contain;background:#fff;border-radius:12px;border:1px solid var(--color-border)}
+  .lead .txt{flex:1;min-width:240px}
+  .lead h3{font-family:var(--font-head);font-size:18px;margin-bottom:4px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+  .sw{background:var(--color-bg);border:1px solid var(--color-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(16,24,40,.08)}
+  .chip{height:92px;display:flex;align-items:flex-end;justify-content:space-between;padding:10px 12px;font-size:12px;font-weight:600}
+  .chip .aa{background:rgba(0,0,0,.18);padding:2px 8px;border-radius:999px;font-size:11px}
+  .meta{padding:12px 14px}
+  .tok{font-family:'Cascadia Code',ui-monospace,monospace;font-size:12px;font-weight:600}
+  .hex{font-family:'Cascadia Code',ui-monospace,monospace;font-size:13px;background:var(--color-surface-2);padding:1px 6px;border-radius:5px;margin-left:6px}
+  .use{display:block;color:var(--color-text-muted);font-size:12.5px;margin-top:7px}
+  .prov{display:inline-block;background:var(--color-secondary);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;margin-top:8px}
+  .darkwrap{--color-bg:#121417;--color-surface:#1C2024;--color-surface-2:#242A30;--color-border:#2A2F35;--color-text:#ECEDEE;--color-text-muted:#A8AEB5;--color-primary:#FF5A5F;--color-secondary:#5BC27C;--color-success:#4ADE80;--color-error:#FF6B6B;background:#0d0f11;border-radius:16px;padding:22px;margin-top:14px}
+  .darkwrap .sw{background:var(--color-bg);border-color:var(--color-border)}
+  .darkwrap .tok,.darkwrap .hex{color:var(--color-text)} .darkwrap .hex{background:var(--color-surface-2)}
+  .darkwrap .use{color:var(--color-text-muted)} .darkwrap h3{color:#ECEDEE}
+  .demo{display:flex;flex-wrap:wrap;gap:14px;align-items:center;background:var(--color-bg);border:1px solid var(--color-border);border-radius:12px;padding:20px;margin-top:8px}
+  .btn{font-family:var(--font-head);font-weight:700;font-size:15px;border:0;border-radius:8px;padding:13px 22px;cursor:pointer}
+  .btn--primary{background:var(--color-primary);color:#fff}
+  .btn--secondary{background:var(--color-secondary);color:#fff}
+  .btn--outline{background:transparent;color:var(--color-primary);border:2px solid var(--color-primary)}
+  .badge{display:inline-flex;align-items:center;gap:6px;background:var(--color-accent);color:#1A1A1A;font-weight:700;font-size:13px;padding:7px 12px;border-radius:999px}
+  .ebar{background:var(--color-primary);color:#fff;border-radius:8px;padding:10px 16px;font-weight:600;font-size:14px;display:flex;gap:18px;flex-wrap:wrap}
+  .note{font-size:13px;color:var(--color-text-muted);margin-top:10px}
+  .pill{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;color:#fff}
+  /* content cards */
+  .cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;margin-top:6px}
+  .card{background:var(--color-bg);border:1px solid var(--color-border);border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(16,24,40,.08)}
+  .card .ph{position:relative;aspect-ratio:16/10;background:var(--color-surface-2);overflow:hidden}
+  .card .ph img{width:100%;height:100%;object-fit:cover}
+  .card .ph.video{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1f2937,#374151);color:#fff}
+  .card .ph .play{width:58px;height:58px;border-radius:50%;background:rgba(231,17,24,.92);display:flex;align-items:center;justify-content:center;font-size:22px}
+  .tagrow{position:absolute;top:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:rgba(0,0,0,.62);color:#fff}
+  .tag.r{background:var(--color-primary)} .tag.g{background:var(--color-secondary)} .tag.a{background:var(--color-accent);color:#1a1a1a}
+  .card .body{padding:14px 16px}
+  .card h4{font-family:var(--font-head);font-size:15.5px;margin-bottom:6px}
+  .card p{font-size:13px;color:var(--color-text-muted);margin-bottom:8px}
+  .where{font-size:12.5px}
+  .where b{color:var(--color-primary)}
+  .warn{font-size:12px;color:var(--color-warning);margin-top:6px}
+  footer{margin-top:42px;color:var(--color-text-muted);font-size:12.5px;text-align:center}
+  h3.dk{font-family:var(--font-head);font-size:16px;margin:0 0 12px;color:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="kicker">Identidad visual + contenido</span>
+  <h1>Paleta del logo y mapa de contenido — Bomberos Restrepo</h1>
+  <p class="sub">Paleta extraída de los colores reales del escudo (fundado en 2003). Cada color indica su procedencia y su contraste WCAG (AA ✓ = ≥4.5:1).</p>
+
+  <div class="lead">
+    <img src="../Contenido/Logo%20Bomberos.png" alt="Logo Cuerpo de Bomberos Voluntarios de Restrepo">
+    <div class="txt">
+      <h3>Escudo oficial · cruz de Malta bomberil</h3>
+      <p class="use" style="font-size:13.5px">El badge combina el <b>rojo</b> bomberil, el <b>verde</b> de los cerros, el <b>dorado</b> del laurel/sol y el azul del río de Restrepo. La paleta de la web se construye con rojo + verde + dorado (auténticos del logo) + neutros. Año de fundación <b>2003</b> visible en el banner.</p>
+    </div>
+  </div>
+
+  <h2><span class="bar"></span>Colores de marca (extraídos del logo)</h2>
+  <div class="grid">
+    <div class="sw"><div class="chip" style="background:#E71118;color:#fff"><span>texto blanco</span><span class="aa">AA ✓ 4.68:1</span></div>
+      <div class="meta"><span class="tok">--color-primary</span><span class="hex">#E71118</span><span class="use">Rojo bomberil. Botón primario, barra de emergencia, acentos.</span><span class="prov">16% del logo</span></div></div>
+    <div class="sw"><div class="chip" style="background:#B00D12;color:#fff"><span>texto blanco</span><span class="aa">AA ✓ 7.21:1</span></div>
+      <div class="meta"><span class="tok">--color-primary-hover</span><span class="hex">#B00D12</span><span class="use">Hover/activo + enlaces rojos sobre blanco (más contraste).</span></div></div>
+    <div class="sw"><div class="chip" style="background:#327D44;color:#fff"><span>texto blanco</span><span class="aa">AA ✓ 5.06:1</span></div>
+      <div class="meta"><span class="tok">--color-secondary</span><span class="hex">#327D44</span><span class="use">Verde de los cerros. Botón secundario, footer, modo institucional.</span><span class="prov">8% del logo</span></div></div>
+    <div class="sw"><div class="chip" style="background:#F2A900;color:#1A1A1A"><span>texto #1A1A1A</span><span class="aa" style="background:rgba(0,0,0,.12);color:#1a1a1a">AA ✓ 8.66:1</span></div>
+      <div class="meta"><span class="tok">--color-accent</span><span class="hex">#F2A900</span><span class="use">Dorado del laurel/sol. SOLO acento (emergencia 119/123, destacados). Texto oscuro.</span><span class="prov">laurel del logo</span></div></div>
+  </div>
+
+  <h2><span class="bar"></span>Neutrales y superficies</h2>
+  <div class="grid">
+    <div class="sw"><div class="chip" style="background:#FFFFFF;color:#1A1A1A;border-bottom:1px solid #D9DCE0"><span>texto principal</span><span class="aa" style="background:rgba(0,0,0,.08);color:#1a1a1a">17.4:1</span></div>
+      <div class="meta"><span class="tok">--color-bg</span><span class="hex">#FFFFFF</span><span class="use">Fondo de página.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#F5F6F7;color:#1A1A1A"><span>superficie</span></div>
+      <div class="meta"><span class="tok">--color-surface</span><span class="hex">#F5F6F7</span><span class="use">Tarjetas, secciones alternas.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#ECEEF0;color:#1A1A1A"><span>elevada/input</span></div>
+      <div class="meta"><span class="tok">--color-surface-2</span><span class="hex">#ECEEF0</span><span class="use">Inputs, hover de superficie.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#1A1A1A;color:#fff"><span>texto blanco</span><span class="aa">17.4:1</span></div>
+      <div class="meta"><span class="tok">--color-text</span><span class="hex">#1A1A1A</span><span class="use">Texto principal.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#4A4F55;color:#fff"><span>texto blanco</span><span class="aa">AA ✓ 8.27:1</span></div>
+      <div class="meta"><span class="tok">--color-text-muted</span><span class="hex">#4A4F55</span><span class="use">Texto secundario / captions.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#D9DCE0;color:#1A1A1A"><span>borde</span></div>
+      <div class="meta"><span class="tok">--color-border</span><span class="hex">#D9DCE0</span><span class="use">Bordes y divisores.</span></div></div>
+  </div>
+
+  <h2><span class="bar"></span>Estados (siempre con icono + texto)</h2>
+  <div class="grid">
+    <div class="sw"><div class="chip" style="background:#1E7B45;color:#fff"><span>texto blanco</span><span class="aa">AA ✓ 5.28:1</span></div>
+      <div class="meta"><span class="tok">--color-success</span><span class="hex">#1E7B45</span><span class="use">Éxito (formulario enviado).</span></div></div>
+    <div class="sw"><div class="chip" style="background:#9A5B00;color:#fff"><span>texto blanco</span><span class="aa">AA ✓ 5.43:1</span></div>
+      <div class="meta"><span class="tok">--color-warning</span><span class="hex">#9A5B00</span><span class="use">Alerta.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#B00020;color:#fff"><span>texto blanco</span><span class="aa">AA ✓ 7.33:1</span></div>
+      <div class="meta"><span class="tok">--color-error</span><span class="hex">#B00020</span><span class="use">Error de validación.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#1B2A4A;color:#fff"><span>foco</span><span class="aa">14.2:1</span></div>
+      <div class="meta"><span class="tok">--color-focus</span><span class="hex">#1B2A4A</span><span class="use">Anillo de foco (azul de los uniformes; resalta sobre rojo/verde).</span></div></div>
+  </div>
+
+  <h2><span class="bar"></span>Modo oscuro</h2>
+  <div class="darkwrap">
+    <h3 class="dk">Vista previa en oscuro</h3>
+    <div class="grid">
+      <div class="sw"><div class="chip" style="background:#121417;color:#ECEDEE"><span>fondo</span></div><div class="meta"><span class="tok">--color-bg</span><span class="hex">#121417</span></div></div>
+      <div class="sw"><div class="chip" style="background:#1C2024;color:#ECEDEE"><span>superficie</span></div><div class="meta"><span class="tok">--color-surface</span><span class="hex">#1C2024</span></div></div>
+      <div class="sw"><div class="chip" style="background:#FF5A5F;color:#121417"><span>texto oscuro</span><span class="aa" style="color:#121417;background:rgba(0,0,0,.12)">AA ✓ 6.04:1</span></div><div class="meta"><span class="tok">--color-primary</span><span class="hex">#FF5A5F</span></div></div>
+      <div class="sw"><div class="chip" style="background:#5BC27C;color:#121417"><span>texto oscuro</span><span class="aa" style="color:#121417;background:rgba(0,0,0,.12)">AA ✓</span></div><div class="meta"><span class="tok">--color-secondary</span><span class="hex">#5BC27C</span></div></div>
+      <div class="sw"><div class="chip" style="background:#ECEDEE;color:#121417"><span>texto</span><span class="aa" style="color:#121417;background:rgba(0,0,0,.08)">15.7:1</span></div><div class="meta"><span class="tok">--color-text</span><span class="hex">#ECEDEE</span></div></div>
+      <div class="sw"><div class="chip" style="background:#F2A900;color:#121417"><span>acento</span></div><div class="meta"><span class="tok">--color-accent</span><span class="hex">#F2A900</span></div></div>
+    </div>
+  </div>
+
+  <h2><span class="bar"></span>Cómo se ven juntos</h2>
+  <div class="ebar"><span>🔥 119 Bomberos</span><span>🚑 123 Emergencias</span><span>📞 310 3118280</span></div>
+  <div class="demo">
+    <button class="btn btn--primary">Ser voluntario</button>
+    <button class="btn btn--secondary">Conócenos</button>
+    <button class="btn btn--outline">Ver más</button>
+    <span class="badge">● Emergencia 119</span>
+    <span class="pill" style="background:#1E7B45">Enviado</span>
+    <span class="pill" style="background:#B00020">Error</span>
+  </div>
+
+  <h2><span class="bar"></span>Inventario de contenido y dónde va en la web</h2>
+  <div class="cgrid">
+    <div class="card">
+      <div class="ph"><img src="../Contenido/Foto%20grupal.jpg" alt="Equipo de bomberos frente al cuartel">
+        <div class="tagrow"><span class="tag r">Foto</span><span class="tag">1600×1200</span></div></div>
+      <div class="body"><h4>Foto grupal en el cuartel</h4>
+        <p>Equipo en uniforme azul frente a las máquinas y el cuartel. Institucional, transmite confianza.</p>
+        <div class="where">→ <b>Hero de Inicio</b> y <b>Quiénes somos</b> (sección equipo).</div></div>
+    </div>
+    <div class="card">
+      <div class="ph"><img src="../Contenido/Acompañamiento%20Primera%20Carrera%20de%20la%20Mujer%20mujer.jpg" alt="Acompañamiento a la Primera Carrera de la Mujer">
+        <div class="tagrow"><span class="tag g">Comunidad</span><span class="tag">1600×1200</span></div></div>
+      <div class="body"><h4>Acompañamiento Carrera de la Mujer</h4>
+        <p>El cuerpo apoyando un evento deportivo comunitario. Muestra cercanía y presencia social.</p>
+        <div class="where">→ <b>Noticias/Eventos</b> y <b>Galería</b> (categoría Comunidad).</div></div>
+    </div>
+    <div class="card">
+      <div class="ph"><img src="../Contenido/Acompañamiento%20entrega%20de%20vehiculos%20acompañamiento%20grupal.jpg" alt="Entrega de vehículos frente a la iglesia">
+        <div class="tagrow"><span class="tag r">Institucional</span><span class="tag">1332×887</span></div></div>
+      <div class="body"><h4>Entrega de vehículos (grupal)</h4>
+        <p>Bomberos con el alcalde y la policía en la entrega de vehículos, frente a la iglesia de Restrepo.</p>
+        <div class="where">→ <b>Noticias</b> (noticia institucional) y <b>Quiénes somos</b> (apoyo).</div>
+        <div class="warn">⚠ Marca de agua "Alcalde" → pedir versión sin marca o acreditar.</div></div>
+    </div>
+    <div class="card">
+      <div class="ph"><img src="../Contenido/Acompañamiento%20entrega%20de%20vehiculos%20acompañamiento.jpg" alt="Acto protocolario de entrega de vehículos">
+        <div class="tagrow"><span class="tag a">Evento</span><span class="tag">1332×887</span></div></div>
+      <div class="body"><h4>Acto protocolario (tarima)</h4>
+        <p>Autoridades en el acto oficial; gorra BOMBEROS sobre la mesa.</p>
+        <div class="where">→ <b>Noticias</b> (detalle del evento de entrega).</div>
+        <div class="warn">⚠ Marca de agua "Alcalde" → recortar o acreditar.</div></div>
+    </div>
+    <div class="card">
+      <div class="ph video"><div class="play">▶</div>
+        <div class="tagrow"><span class="tag r">Video</span><span class="tag">65 MB</span></div></div>
+      <div class="body"><h4>"¿Quién es bombero?"</h4>
+        <p>Video motivacional/identitario. El más potente para emocionar y reclutar.</p>
+        <div class="where">→ <b>Hero de Inicio</b> (loop corto) o video destacado en <b>Voluntariado</b>/<b>Quiénes somos</b>.</div>
+        <div class="warn">⚠ 65 MB es muy pesado → comprimir (720p, &lt;10 MB) o subir a YouTube y embeber con póster.</div></div>
+    </div>
+    <div class="card">
+      <div class="ph video"><div class="play">▶</div>
+        <div class="tagrow"><span class="tag g">Video</span><span class="tag">25 MB</span></div></div>
+      <div class="body"><h4>Actividad con personas con discapacidad</h4>
+        <p>Refuerza inclusión y vocación de servicio a la comunidad.</p>
+        <div class="where">→ <b>Noticias/Comunidad</b> y <b>Galería</b>.</div>
+        <div class="warn">⚠ Comprimir o embeber (YouTube) para no penalizar la carga.</div></div>
+    </div>
+    <div class="card">
+      <div class="ph"><img src="../Contenido/Logo%20Bomberos.png" alt="Logo Bomberos Restrepo" style="object-fit:contain;background:#fff">
+        <div class="tagrow"><span class="tag r">Logo</span><span class="tag">1254×1254</span></div></div>
+      <div class="body"><h4>Logo / escudo oficial</h4>
+        <p>Identidad principal. Fundación 2003 (útil para "desde 2003" en estadísticas/historia).</p>
+        <div class="where">→ <b>Navbar</b>, <b>Footer</b>, <b>favicon</b>, <b>imagen OG</b> y sello en secciones.</div>
+        <div class="warn">⚠ Tiene fondo blanco → generar versión PNG transparente / SVG para usar sobre fondos de color.</div></div>
+    </div>
+  </div>
+
+  <p class="note">Todas las fotos se convertirán a <b>WebP</b> con tamaños responsive (375/768/1024/1440) y se cargarán con <em>lazy-load</em> y dimensiones reservadas (CLS&lt;0.1). Los videos se comprimen o se embeben. El rojo, verde y dorado salen del logo y se controlan desde un solo token editable en el Admin.</p>
+
+  <footer>Cuerpo de Bomberos Voluntarios de Restrepo (Meta) · Paleta del logo + mapa de contenido · Documento de revisión.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+# Solo se necesitan web/ y Caddyfile para la imagen. Excluir el resto.
+.git/
+.gitignore
+.env
+.env.*
+!.env.example
+Contenido/
+scripts/
+design/
+cloudinary-urls.json
+*.md
+**/.DS_Store
+Thumbs.db
+desktop.ini
