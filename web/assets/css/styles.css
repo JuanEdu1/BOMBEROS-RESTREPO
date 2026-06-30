@@ -62,7 +62,15 @@
   --dur-fast:150ms; --dur-base:220ms; --dur-slow:300ms;
 }
 
-@media (min-width: 1024px) { :root { --gutter: var(--space-6); } }
+@media (min-width: 1024px) {
+  :root {
+    --gutter: var(--space-6);
+    /* Escala vertical más compacta en desktop: secciones menos altas, todo cabe mejor */
+    --space-7: 40px;   /* 48 → 40 */
+    --space-8: 52px;   /* 64 → 52 */
+    --space-9: 72px;   /* 96 → 72 */
+  }
+}
 
 /* ---------- RESET / BASE ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -81,7 +89,7 @@ body {
 }
 
 h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.15; font-weight: 800; letter-spacing: -.01em; color: var(--color-text); }
-h2 { font-size: clamp(1.45rem, 1rem + 1.8vw, 1.95rem); }
+h2 { font-size: clamp(1.35rem, 1rem + 1.4vw, 1.7rem); }
 h3 { font-size: 1.25rem; font-weight: 700; }
 p { line-height: 1.65; }
 a { color: var(--color-primary-hover); text-decoration: none; }
@@ -298,13 +306,13 @@ button { font: inherit; cursor: pointer; }
 }
 .hero__content {
   position: relative; z-index: 1;
-  padding-block: clamp(var(--space-7), 9vh, 104px);
+  padding-block: clamp(var(--space-6), 7vh, 76px);
   max-width: 720px;
 }
 .hero__title {
   color: #fff;
-  font-size: clamp(2.1rem, 1.3rem + 3.8vw, 3.3rem);
-  font-weight: 900; line-height: 1.04; letter-spacing: -.02em;
+  font-size: clamp(2rem, 1.2rem + 2.6vw, 2.6rem);
+  font-weight: 900; line-height: 1.05; letter-spacing: -.02em;
   text-shadow: 0 2px 20px rgba(0,0,0,.45);
   margin-bottom: var(--space-4);
   text-wrap: balance;
@@ -352,7 +360,7 @@ button { font: inherit; cursor: pointer; }
 .stat:nth-child(2n)::after { display: none; }
 .stat__num {
   display: block; font-family: var(--font-head); font-weight: 900;
-  font-size: clamp(1.8rem, 1.3rem + 2.2vw, 2.5rem); line-height: 1;
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.1rem); line-height: 1;
   color: var(--color-accent); font-variant-numeric: tabular-nums; letter-spacing: -.01em;
 }
 .stat__label { display: block; margin-top: var(--space-2); font-size: .9rem; color: rgba(255,255,255,.85); }
@@ -529,8 +537,11 @@ button { font: inherit; cursor: pointer; }
 .cta-band--support p { color: var(--color-text-muted); font-size: 1.08rem; max-width: 60ch; }
 .cta-band__actions { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); }
 @media (min-width: 860px) { .cta-band__actions { align-items: flex-end; } }
-.cta-band__note { font-size: .92rem; color: #fff; }
-.cta-band__note a { color: #fff; font-weight: 700; text-decoration: underline; }
+.cta-band__note { font-size: .92rem; color: var(--color-text-muted); }
+.cta-band__note a { color: var(--color-primary-hover); font-weight: 700; text-decoration: underline; }
+/* En banda roja el texto va en blanco; en banda clara (--support) usa los colores por defecto legibles */
+.cta-band--volunteer .cta-band__note,
+.cta-band--volunteer .cta-band__note a { color: #fff; }
 .cta-band__chevrons {
   position: absolute; inset: 0 0 0 auto; width: 40%; z-index: 0; opacity: .12;
   background-image: repeating-linear-gradient(-45deg, #fff 0 20px, transparent 20px 40px);
@@ -645,7 +656,7 @@ button { font: inherit; cursor: pointer; }
 .page-hero__overlay { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(15,17,20,.72) 0%, rgba(15,17,20,.5) 40%, rgba(120,9,12,.82) 100%), linear-gradient(90deg, rgba(15,17,20,.7), rgba(15,17,20,.1) 70%); }
 .page-hero__chevrons { position: absolute; left: 0; right: 0; bottom: 0; height: 8px; background-image: var(--chevron-band); z-index: 0; }
 .page-hero__inner { position: relative; z-index: 1; padding-block: clamp(var(--space-7), 7vw, var(--space-8)); max-width: 760px; }
-.page-hero h1 { color: #fff; font-size: clamp(1.9rem, 1.2rem + 3vw, 2.8rem); line-height: 1.08; letter-spacing: -.02em; margin-bottom: var(--space-3); text-wrap: balance; text-shadow: 0 2px 18px rgba(0,0,0,.4); }
+.page-hero h1 { color: #fff; font-size: clamp(1.7rem, 1.1rem + 2.2vw, 2.3rem); line-height: 1.1; letter-spacing: -.02em; margin-bottom: var(--space-3); text-wrap: balance; text-shadow: 0 2px 18px rgba(0,0,0,.4); }
 .page-hero__lede { color: rgba(255,255,255,.92); font-size: clamp(1rem, .96rem + .3vw, 1.12rem); max-width: 60ch; }
 
 .breadcrumbs { font-size: .85rem; }
