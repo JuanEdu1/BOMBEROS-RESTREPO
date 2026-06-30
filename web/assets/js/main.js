@@ -206,4 +206,32 @@
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
     sections.forEach(function (s) { spy.observe(s); });
   }
+
+  /* ---------- Formularios → WhatsApp (sin backend en Fase 1) ---------- */
+  var waForms = Array.prototype.slice.call(document.querySelectorAll('form[data-whatsapp]'));
+  waForms.forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (typeof form.reportValidity === 'function' && !form.reportValidity()) return;
+      var phone = form.getAttribute('data-whatsapp');
+      var asunto = form.getAttribute('data-asunto') || 'Mensaje desde la web';
+      var lines = [asunto, ''];
+      var fields = form.querySelectorAll('input, select, textarea');
+      Array.prototype.forEach.call(fields, function (f) {
+        if (f.type === 'checkbox' || f.type === 'hidden' || !f.value) return;
+        var labelEl = f.id ? form.querySelector('label[for="' + f.id + '"]') : null;
+        var label = labelEl ? labelEl.textContent.replace(/\*/g, '').trim() : (f.name || 'Campo');
+        lines.push(label + ': ' + f.value);
+      });
+      var url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(lines.join('\n'));
+      window.open(url, '_blank', 'noopener');
+      var success = document.getElementById(form.getAttribute('data-success') || '');
+      if (success) {
+        form.classList.add('is-sent');
+        success.classList.add('is-visible');
+        success.setAttribute('tabindex', '-1');
+        success.focus();
+      }
+    });
+  });
 })();
